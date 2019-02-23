@@ -225,6 +225,7 @@ class HadoopRDD[K, V](
 
       private val split = theSplit.asInstanceOf[HadoopPartition]
       logInfo("Input split: " + split.inputSplit)
+      logInfo("TESTING")
       private val jobConf = getJobConf()
 
       private val inputMetrics = context.taskMetrics().inputMetrics
