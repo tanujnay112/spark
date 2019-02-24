@@ -282,6 +282,7 @@ class HadoopRDD[K, V](
         // Update the bytes read before closing is to make sure lingering bytesRead statistics in
         // this thread get correctly added.
         logInfo("Input split completed: " + split.inputSplit)
+        logInfo("FormatClass is " + inputFormatClass.getName())
         updateBytesRead()
         closeIfNeeded()
       }
