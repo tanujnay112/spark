@@ -281,6 +281,7 @@ class HadoopRDD[K, V](
       context.addTaskCompletionListener[Unit] { context =>
         // Update the bytes read before closing is to make sure lingering bytesRead statistics in
         // this thread get correctly added.
+        logInfo("Input split completed: " + split.inputSplit)
         updateBytesRead()
         closeIfNeeded()
       }
@@ -340,7 +341,6 @@ class HadoopRDD[K, V](
       }
     }
     val split1 = theSplit.asInstanceOf[HadoopPartition]
-    logInfo("Input split completed: " + split1.inputSplit)
     new InterruptibleIterator[(K, V)](context, iter)
   }
 
